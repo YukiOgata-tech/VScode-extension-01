@@ -1,0 +1,12 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+tsconfig.json
+eslint.config.mjs
+*.vsix
+coverage/**
+*.map
+dist/**/*.map
+node_modules/sound-play/src/**
+node_modules/sound-play/webpack.config.js

@@ -1,0 +1,191 @@
+{
+  "name": "terminal-error-sound",
+  "displayName": "Terminal Error Sound",
+  "description": "Play a sound when a VS Code terminal command succeeds, fails, or emits warnings.",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-name/terminal-error-sound.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-name/terminal-error-sound/issues"
+  },
+  "homepage": "https://github.com/your-name/terminal-error-sound#readme",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "terminal",
+    "sound",
+    "error",
+    "build",
+    "notification",
+    "shell"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "terminalErrorSound.testErrorSound",
+        "title": "Terminal Error Sound: Test Error Sound"
+      },
+      {
+        "command": "terminalErrorSound.testWarningSound",
+        "title": "Terminal Error Sound: Test Warning Sound"
+      },
+      {
+        "command": "terminalErrorSound.testSuccessSound",
+        "title": "Terminal Error Sound: Test Success Sound"
+      },
+      {
+        "command": "terminalErrorSound.selectSoundMode",
+        "title": "Terminal Error Sound: Select Sound Mode"
+      },
+      {
+        "command": "terminalErrorSound.nextSoundMode",
+        "title": "Terminal Error Sound: Next Sound Mode"
+      },
+      {
+        "command": "terminalErrorSound.toggleEnabled",
+        "title": "Terminal Error Sound: Toggle Enabled"
+      },
+      {
+        "command": "terminalErrorSound.showLastIssue",
+        "title": "Terminal Error Sound: Show Last Detected Issue"
+      }
+    ],
+    "configuration": {
+      "title": "Terminal Error Sound",
+      "properties": {
+        "terminalErrorSound.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable terminal sound notifications."
+        },
+        "terminalErrorSound.playOnSuccess": {
+          "type": "boolean",
+          "default": false,
+          "description": "Play a sound when a terminal command succeeds with exit code 0."
+        },
+        "terminalErrorSound.includeWarnings": {
+          "type": "boolean",
+          "default": false,
+          "description": "Play a sound for warning-only terminal output."
+        },
+        "terminalErrorSound.treatUnknownExitCodeAsError": {
+          "type": "boolean",
+          "default": false,
+          "description": "Treat undefined terminal exit codes as errors."
+        },
+        "terminalErrorSound.showNotification": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show a VS Code notification when an issue is detected."
+        },
+        "terminalErrorSound.errorSoundFile": {
+          "type": "string",
+          "default": "error.mp3",
+          "description": "Sound file name under the extension's media directory for errors."
+        },
+        "terminalErrorSound.warningSoundFile": {
+          "type": "string",
+          "default": "warning.mp3",
+          "description": "Sound file name under the extension's media directory for warnings."
+        },
+        "terminalErrorSound.successSoundFile": {
+          "type": "string",
+          "default": "warning.mp3",
+          "description": "Sound file name under the extension's media directory for successful commands."
+        },
+        "terminalErrorSound.soundMode": {
+          "type": "string",
+          "default": "default",
+          "description": "Active sound mode. Use Terminal Error Sound: Select Sound Mode or Next Sound Mode to change it."
+        },
+        "terminalErrorSound.soundModes": {
+          "type": "object",
+          "default": {
+            "default": {
+              "errorSoundFile": "error.mp3",
+              "warningSoundFile": "warning.mp3",
+              "successSoundFile": "warning.mp3"
+            },
+            "mode1": {
+              "errorSoundFile": "error.mp3",
+              "warningSoundFile": "warning.mp3",
+              "successSoundFile": "warning.mp3"
+            },
+            "mode2": {
+              "errorSoundFile": "error.wav",
+              "warningSoundFile": "warning.wav",
+              "successSoundFile": "warning.wav"
+            }
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "errorSoundFile": {
+                "type": "string"
+              },
+              "warningSoundFile": {
+                "type": "string"
+              },
+              "successSoundFile": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Named sound modes. Each file name is resolved under the extension's media directory."
+        },
+        "terminalErrorSound.cooldownMs": {
+          "type": "number",
+          "default": 800,
+          "minimum": 0,
+          "description": "Minimum interval between sound playback in milliseconds."
+        },
+        "terminalErrorSound.maxOutputChars": {
+          "type": "number",
+          "default": 60000,
+          "minimum": 1000,
+          "description": "Maximum number of terminal output characters stored per command."
+        },
+        "terminalErrorSound.ignoredCommands": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Command substrings to ignore. If a command line contains any of these strings, no sound is played."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.93.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vscode/vsce": "^3.2.1",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "sound-play": "^1.1.0"
+  }
+}
