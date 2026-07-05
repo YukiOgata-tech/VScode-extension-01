@@ -78,14 +78,14 @@ Example settings:
   "terminalErrorSound.soundMode": "mode1",
   "terminalErrorSound.soundModes": {
     "mode1": {
-      "errorSoundFile": "error.mp3",
-      "warningSoundFile": "warning.mp3",
-      "successSoundFile": "success.mp3"
+      "errorSoundFile": "mode1/error.mp3",
+      "warningSoundFile": "mode1/warning.mp3",
+      "successSoundFile": "mode1/success.mp3"
     },
     "mode2": {
-      "errorSoundFile": "error2.mp3",
-      "warningSoundFile": "warning2.mp3",
-      "successSoundFile": "success2.mp3"
+      "errorSoundFile": "mode2/error.mp3",
+      "warningSoundFile": "mode2/warning.mp3",
+      "successSoundFile": "mode2/success.mp3"
     }
   }
 }
@@ -96,11 +96,12 @@ Example settings:
 Put your own files here:
 
 ```txt
-media/error.mp3
-media/warning.mp3
+media/mode1/error.mp3
+media/mode1/warning.mp3
+media/mode1/success.mp3
 ```
 
-The default success sound also uses `media/warning.mp3`. Replace the included files with your own real MP3 or WAV files before publishing.
+Add more folders such as `media/mode2/` and point `terminalErrorSound.soundModes` at those files when you want more modes.
 
 ## Packaging
 

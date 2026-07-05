@@ -26,19 +26,19 @@ export function getConfig(): ExtensionConfig {
     soundMode: config.get<string>("soundMode", "default"),
     soundModes: config.get<Record<string, SoundModeConfig>>("soundModes", {
       default: {
-        errorSoundFile: "error.mp3",
-        warningSoundFile: "warning.mp3",
-        successSoundFile: "warning.mp3"
+        errorSoundFile: "mode1/error.mp3",
+        warningSoundFile: "mode1/warning.mp3",
+        successSoundFile: "mode1/success.mp3"
       },
       mode1: {
-        errorSoundFile: "error.mp3",
-        warningSoundFile: "warning.mp3",
-        successSoundFile: "warning.mp3"
+        errorSoundFile: "mode1/error.mp3",
+        warningSoundFile: "mode1/warning.mp3",
+        successSoundFile: "mode1/success.mp3"
       },
       mode2: {
-        errorSoundFile: "error.wav",
-        warningSoundFile: "warning.wav",
-        successSoundFile: "warning.wav"
+        errorSoundFile: "mode2/error.mp3",
+        warningSoundFile: "mode2/warning.mp3",
+        successSoundFile: "mode2/success.mp3"
       }
     })
   };

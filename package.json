@@ -3,16 +3,16 @@
   "displayName": "Terminal Error Sound",
   "description": "Play a sound when a VS Code terminal command succeeds, fails, or emits warnings.",
   "version": "0.0.1",
-  "publisher": "your-publisher-id",
+  "publisher": "YukiOgata",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-name/terminal-error-sound.git"
+    "url": "https://github.com/YukiOgata-tech/VScode-extension-01.git"
   },
   "bugs": {
-    "url": "https://github.com/your-name/terminal-error-sound/issues"
+    "url": "https://github.com/YukiOgata-tech/VScode-extension-01/issues"
   },
-  "homepage": "https://github.com/your-name/terminal-error-sound#readme",
+  "homepage": "https://github.com/YukiOgata-tech/VScode-extension-01#readme",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -114,19 +114,19 @@
           "type": "object",
           "default": {
             "default": {
-              "errorSoundFile": "error.mp3",
-              "warningSoundFile": "warning.mp3",
-              "successSoundFile": "warning.mp3"
+              "errorSoundFile": "mode1/error.mp3",
+              "warningSoundFile": "mode1/warning.mp3",
+              "successSoundFile": "mode1/success.mp3"
             },
             "mode1": {
-              "errorSoundFile": "error.mp3",
-              "warningSoundFile": "warning.mp3",
-              "successSoundFile": "warning.mp3"
+              "errorSoundFile": "mode1/error.mp3",
+              "warningSoundFile": "mode1/warning.mp3",
+              "successSoundFile": "mode1/success.mp3"
             },
             "mode2": {
-              "errorSoundFile": "error.wav",
-              "warningSoundFile": "warning.wav",
-              "successSoundFile": "warning.wav"
+              "errorSoundFile": "mode2/error.mp3",
+              "warningSoundFile": "mode2/warning.mp3",
+              "successSoundFile": "mode2/success.mp3"
             }
           },
           "additionalProperties": {

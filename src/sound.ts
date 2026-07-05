@@ -16,7 +16,13 @@ export class SoundPlayer {
 
     this.lastPlayedAt = now;
 
-    const safeFileName = path.basename(fileName);
+    const safeFileName = normalizeMediaPath(fileName);
+
+    if (!safeFileName) {
+      vscode.window.showWarningMessage(`Terminal Error Sound: invalid sound file path "${fileName}".`);
+      return;
+    }
+
     const audioPath = path.join(this.context.extensionPath, "media", safeFileName);
 
     try {
@@ -28,4 +34,18 @@ export class SoundPlayer {
       );
     }
   }
+}
+
+function normalizeMediaPath(fileName: string): string | undefined {
+  const normalized = fileName.replace(/\\/g, "/").trim();
+
+  if (
+    normalized.length === 0 ||
+    path.isAbsolute(normalized) ||
+    normalized.split("/").includes("..")
+  ) {
+    return undefined;
+  }
+
+  return normalized;
 }
