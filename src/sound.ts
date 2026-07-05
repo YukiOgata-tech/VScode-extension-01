@@ -19,7 +19,7 @@ export class SoundPlayer {
     const safeFileName = normalizeMediaPath(fileName);
 
     if (!safeFileName) {
-      vscode.window.showWarningMessage(`Terminal Error Sound: invalid sound file path "${fileName}".`);
+      vscode.window.showWarningMessage(`One Truth Cue: invalid sound file path "${fileName}".`);
       return;
     }
 
@@ -30,7 +30,7 @@ export class SoundPlayer {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       vscode.window.showWarningMessage(
-        `Terminal Error Sound: failed to play "${safeFileName}". ${message}`
+        `One Truth Cue: failed to play "${safeFileName}". ${message}`
       );
     }
   }

@@ -1,7 +1,7 @@
 {
-  "name": "terminal-error-sound",
-  "displayName": "Terminal Error Sound",
-  "description": "Play a sound when a VS Code terminal command succeeds, fails, or emits warnings.",
+  "name": "one-truth-cue",
+  "displayName": "One Truth Cue",
+  "description": "Play character-style sound cues when VS Code commands succeed, fail, or emit warnings.",
   "version": "0.0.1",
   "publisher": "YukiOgata",
   "license": "MIT",
@@ -22,7 +22,8 @@
   "keywords": [
     "terminal",
     "sound",
-    "error",
+    "cue",
+    "detective",
     "build",
     "notification",
     "shell"
@@ -34,83 +35,83 @@
   "contributes": {
     "commands": [
       {
-        "command": "terminalErrorSound.testErrorSound",
-        "title": "Terminal Error Sound: Test Error Sound"
+        "command": "oneTruthCue.testErrorSound",
+        "title": "One Truth Cue: Test Error Cue"
       },
       {
-        "command": "terminalErrorSound.testWarningSound",
-        "title": "Terminal Error Sound: Test Warning Sound"
+        "command": "oneTruthCue.testWarningSound",
+        "title": "One Truth Cue: Test Warning Cue"
       },
       {
-        "command": "terminalErrorSound.testSuccessSound",
-        "title": "Terminal Error Sound: Test Success Sound"
+        "command": "oneTruthCue.testSuccessSound",
+        "title": "One Truth Cue: Test Success Cue"
       },
       {
-        "command": "terminalErrorSound.selectSoundMode",
-        "title": "Terminal Error Sound: Select Sound Mode"
+        "command": "oneTruthCue.selectSoundMode",
+        "title": "One Truth Cue: Select Cue Mode"
       },
       {
-        "command": "terminalErrorSound.nextSoundMode",
-        "title": "Terminal Error Sound: Next Sound Mode"
+        "command": "oneTruthCue.nextSoundMode",
+        "title": "One Truth Cue: Next Cue Mode"
       },
       {
-        "command": "terminalErrorSound.toggleEnabled",
-        "title": "Terminal Error Sound: Toggle Enabled"
+        "command": "oneTruthCue.toggleEnabled",
+        "title": "One Truth Cue: Toggle Enabled"
       },
       {
-        "command": "terminalErrorSound.showLastIssue",
-        "title": "Terminal Error Sound: Show Last Detected Issue"
+        "command": "oneTruthCue.showLastIssue",
+        "title": "One Truth Cue: Show Last Detected Issue"
       }
     ],
     "configuration": {
-      "title": "Terminal Error Sound",
+      "title": "One Truth Cue",
       "properties": {
-        "terminalErrorSound.enabled": {
+        "oneTruthCue.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable terminal sound notifications."
+          "description": "Enable command sound cues."
         },
-        "terminalErrorSound.playOnSuccess": {
+        "oneTruthCue.playOnSuccess": {
           "type": "boolean",
           "default": false,
           "description": "Play a sound when a terminal command succeeds with exit code 0."
         },
-        "terminalErrorSound.includeWarnings": {
+        "oneTruthCue.includeWarnings": {
           "type": "boolean",
           "default": false,
           "description": "Play a sound for warning-only terminal output."
         },
-        "terminalErrorSound.treatUnknownExitCodeAsError": {
+        "oneTruthCue.treatUnknownExitCodeAsError": {
           "type": "boolean",
           "default": false,
           "description": "Treat undefined terminal exit codes as errors."
         },
-        "terminalErrorSound.showNotification": {
+        "oneTruthCue.showNotification": {
           "type": "boolean",
           "default": false,
           "description": "Show a VS Code notification when an issue is detected."
         },
-        "terminalErrorSound.errorSoundFile": {
+        "oneTruthCue.errorSoundFile": {
           "type": "string",
           "default": "error.mp3",
           "description": "Sound file name under the extension's media directory for errors."
         },
-        "terminalErrorSound.warningSoundFile": {
+        "oneTruthCue.warningSoundFile": {
           "type": "string",
           "default": "warning.mp3",
           "description": "Sound file name under the extension's media directory for warnings."
         },
-        "terminalErrorSound.successSoundFile": {
+        "oneTruthCue.successSoundFile": {
           "type": "string",
           "default": "warning.mp3",
           "description": "Sound file name under the extension's media directory for successful commands."
         },
-        "terminalErrorSound.soundMode": {
+        "oneTruthCue.soundMode": {
           "type": "string",
           "default": "default",
-          "description": "Active sound mode. Use Terminal Error Sound: Select Sound Mode or Next Sound Mode to change it."
+          "description": "Active cue mode. Use One Truth Cue: Select Cue Mode or Next Cue Mode to change it."
         },
-        "terminalErrorSound.soundModes": {
+        "oneTruthCue.soundModes": {
           "type": "object",
           "default": {
             "default": {
@@ -145,19 +146,19 @@
           },
           "description": "Named sound modes. Each file name is resolved under the extension's media directory."
         },
-        "terminalErrorSound.cooldownMs": {
+        "oneTruthCue.cooldownMs": {
           "type": "number",
           "default": 800,
           "minimum": 0,
           "description": "Minimum interval between sound playback in milliseconds."
         },
-        "terminalErrorSound.maxOutputChars": {
+        "oneTruthCue.maxOutputChars": {
           "type": "number",
           "default": 60000,
           "minimum": 1000,
           "description": "Maximum number of terminal output characters stored per command."
         },
-        "terminalErrorSound.ignoredCommands": {
+        "oneTruthCue.ignoredCommands": {
           "type": "array",
           "default": [],
           "items": {

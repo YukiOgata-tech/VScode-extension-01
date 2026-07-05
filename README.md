@@ -1,6 +1,6 @@
-# Terminal Error Sound
+# One Truth Cue
 
-Terminal Error Sound is a small VS Code extension that plays a short sound when a terminal command succeeds, fails, or emits warnings.
+One Truth Cue is a small VS Code extension that plays character-style sound cues when a VS Code terminal command succeeds, fails, or emits warnings.
 
 ## What it does
 
@@ -50,33 +50,33 @@ node -e "throw new Error('boom')"
 
 | Setting | Default | Description |
 |---|---:|---|
-| `terminalErrorSound.enabled` | `true` | Enable the extension |
-| `terminalErrorSound.playOnSuccess` | `false` | Play a sound for successful commands |
-| `terminalErrorSound.includeWarnings` | `false` | Play a sound for warning-only output |
-| `terminalErrorSound.treatUnknownExitCodeAsError` | `false` | Treat undefined exit code as an error |
-| `terminalErrorSound.showNotification` | `false` | Show notification when an issue is detected |
-| `terminalErrorSound.errorSoundFile` | `error.mp3` | Error sound file under `media/` |
-| `terminalErrorSound.warningSoundFile` | `warning.mp3` | Warning sound file under `media/` |
-| `terminalErrorSound.successSoundFile` | `warning.mp3` | Success sound file under `media/` |
-| `terminalErrorSound.soundMode` | `default` | Active sound mode |
-| `terminalErrorSound.soundModes` | object | Named sound mode definitions |
-| `terminalErrorSound.cooldownMs` | `800` | Minimum interval between sounds |
-| `terminalErrorSound.maxOutputChars` | `60000` | Maximum output kept per command |
-| `terminalErrorSound.ignoredCommands` | `[]` | Command substrings to ignore |
+| `oneTruthCue.enabled` | `true` | Enable the extension |
+| `oneTruthCue.playOnSuccess` | `false` | Play a sound for successful commands |
+| `oneTruthCue.includeWarnings` | `false` | Play a sound for warning-only output |
+| `oneTruthCue.treatUnknownExitCodeAsError` | `false` | Treat undefined exit code as an error |
+| `oneTruthCue.showNotification` | `false` | Show notification when an issue is detected |
+| `oneTruthCue.errorSoundFile` | `error.mp3` | Error sound file under `media/` |
+| `oneTruthCue.warningSoundFile` | `warning.mp3` | Warning sound file under `media/` |
+| `oneTruthCue.successSoundFile` | `warning.mp3` | Success sound file under `media/` |
+| `oneTruthCue.soundMode` | `default` | Active cue mode |
+| `oneTruthCue.soundModes` | object | Named cue mode definitions |
+| `oneTruthCue.cooldownMs` | `800` | Minimum interval between sounds |
+| `oneTruthCue.maxOutputChars` | `60000` | Maximum output kept per command |
+| `oneTruthCue.ignoredCommands` | `[]` | Command substrings to ignore |
 
 ## Sound modes
 
 Use these commands from the command palette:
 
-- `Terminal Error Sound: Select Sound Mode`
-- `Terminal Error Sound: Next Sound Mode`
+- `One Truth Cue: Select Cue Mode`
+- `One Truth Cue: Next Cue Mode`
 
 Example settings:
 
 ```json
 {
-  "terminalErrorSound.soundMode": "mode1",
-  "terminalErrorSound.soundModes": {
+  "oneTruthCue.soundMode": "mode1",
+  "oneTruthCue.soundModes": {
     "mode1": {
       "errorSoundFile": "mode1/error.mp3",
       "warningSoundFile": "mode1/warning.mp3",
@@ -101,7 +101,7 @@ media/mode1/warning.mp3
 media/mode1/success.mp3
 ```
 
-Add more folders such as `media/mode2/` and point `terminalErrorSound.soundModes` at those files when you want more modes.
+Add more folders such as `media/mode2/` and point `oneTruthCue.soundModes` at those files when you want more modes.
 
 ## Packaging
 

@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext): void {
   });
 
   const testErrorDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.testErrorSound",
+    "oneTruthCue.testErrorSound",
     async () => {
       const soundFiles = getSoundFiles();
       await soundPlayer.play(soundFiles.errorSoundFile, 0);
@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const testWarningDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.testWarningSound",
+    "oneTruthCue.testWarningSound",
     async () => {
       const soundFiles = getSoundFiles();
       await soundPlayer.play(soundFiles.warningSoundFile, 0);
@@ -51,7 +51,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const testSuccessDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.testSuccessSound",
+    "oneTruthCue.testSuccessSound",
     async () => {
       const soundFiles = getSoundFiles();
       await soundPlayer.play(soundFiles.successSoundFile, 0);
@@ -59,38 +59,38 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const selectSoundModeDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.selectSoundMode",
+    "oneTruthCue.selectSoundMode",
     async () => {
       const selectedMode = await selectSoundMode();
       if (selectedMode) {
-        vscode.window.showInformationMessage(`Terminal Error Sound: sound mode set to "${selectedMode}".`);
+        vscode.window.showInformationMessage(`One Truth Cue: cue mode set to "${selectedMode}".`);
       }
     }
   );
 
   const nextSoundModeDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.nextSoundMode",
+    "oneTruthCue.nextSoundMode",
     async () => {
       const nextMode = await switchToNextSoundMode();
       if (nextMode) {
-        vscode.window.showInformationMessage(`Terminal Error Sound: sound mode set to "${nextMode}".`);
+        vscode.window.showInformationMessage(`One Truth Cue: cue mode set to "${nextMode}".`);
       }
     }
   );
 
   const toggleDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.toggleEnabled",
+    "oneTruthCue.toggleEnabled",
     async () => {
       const enabled = await toggleEnabled();
-      vscode.window.showInformationMessage(`Terminal Error Sound: ${enabled ? "enabled" : "disabled"}.`);
+      vscode.window.showInformationMessage(`One Truth Cue: ${enabled ? "enabled" : "disabled"}.`);
     }
   );
 
   const showLastIssueDisposable = vscode.commands.registerCommand(
-    "terminalErrorSound.showLastIssue",
+    "oneTruthCue.showLastIssue",
     () => {
       if (!lastIssue) {
-        vscode.window.showInformationMessage("Terminal Error Sound: no issue has been detected yet.");
+        vscode.window.showInformationMessage("One Truth Cue: no issue has been detected yet.");
         return;
       }
 

@@ -9,7 +9,7 @@ export type ResolvedSoundFiles = {
 };
 
 export function getConfig(): ExtensionConfig {
-  const config = vscode.workspace.getConfiguration("terminalErrorSound");
+  const config = vscode.workspace.getConfiguration("oneTruthCue");
 
   return {
     enabled: config.get<boolean>("enabled", true),
@@ -69,7 +69,7 @@ export function getSoundModeNames(config = getConfig()): string[] {
 }
 
 export async function setSoundMode(modeName: string): Promise<void> {
-  const config = vscode.workspace.getConfiguration("terminalErrorSound");
+  const config = vscode.workspace.getConfiguration("oneTruthCue");
   await config.update("soundMode", modeName, vscode.ConfigurationTarget.Global);
 }
 
@@ -109,7 +109,7 @@ export async function switchToNextSoundMode(): Promise<string | undefined> {
 }
 
 export async function toggleEnabled(): Promise<boolean> {
-  const config = vscode.workspace.getConfiguration("terminalErrorSound");
+  const config = vscode.workspace.getConfiguration("oneTruthCue");
   const current = config.get<boolean>("enabled", true);
   const next = !current;
 
