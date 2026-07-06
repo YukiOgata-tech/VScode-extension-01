@@ -1,9 +1,10 @@
 {
-  "name": "one-truth-cue",
-  "displayName": "One Truth Cue",
-  "description": "Play character-style sound cues when VS Code commands succeed, fail, or emit warnings.",
-  "version": "0.0.1",
+  "name": "terminal-hype-lines",
+  "displayName": "Terminal Hype Lines",
+  "description": "Play anime-inspired hype-line sound effects when VS Code terminal commands start, succeed, fail, or emit warnings.",
+  "version": "0.0.3",
   "publisher": "YukiOgata",
+  "icon": "images/icon_comic.png",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,83 +36,117 @@
   "contributes": {
     "commands": [
       {
-        "command": "oneTruthCue.testErrorSound",
-        "title": "One Truth Cue: Test Error Cue"
+        "command": "terminalHypeLines.testStartSound",
+        "title": "Terminal Hype Lines: Test Start Sound"
       },
       {
-        "command": "oneTruthCue.testWarningSound",
-        "title": "One Truth Cue: Test Warning Cue"
+        "command": "terminalHypeLines.testErrorSound",
+        "title": "Terminal Hype Lines: Test Error Sound"
       },
       {
-        "command": "oneTruthCue.testSuccessSound",
-        "title": "One Truth Cue: Test Success Cue"
+        "command": "terminalHypeLines.testWarningSound",
+        "title": "Terminal Hype Lines: Test Warning Sound"
       },
       {
-        "command": "oneTruthCue.selectSoundMode",
-        "title": "One Truth Cue: Select Cue Mode"
+        "command": "terminalHypeLines.testSuccessSound",
+        "title": "Terminal Hype Lines: Test Success Sound"
       },
       {
-        "command": "oneTruthCue.nextSoundMode",
-        "title": "One Truth Cue: Next Cue Mode"
+        "command": "terminalHypeLines.selectSoundMode",
+        "title": "Terminal Hype Lines: Select Sound Mode"
       },
       {
-        "command": "oneTruthCue.toggleEnabled",
-        "title": "One Truth Cue: Toggle Enabled"
+        "command": "terminalHypeLines.nextSoundMode",
+        "title": "Terminal Hype Lines: Switch to Next Sound Mode"
       },
       {
-        "command": "oneTruthCue.showLastIssue",
-        "title": "One Truth Cue: Show Last Detected Issue"
+        "command": "terminalHypeLines.useMode1",
+        "title": "Terminal Hype Lines: Use Mode mode1"
+      },
+      {
+        "command": "terminalHypeLines.useModeJujutsu",
+        "title": "Terminal Hype Lines: Use Mode mode_jujutsu"
+      },
+      {
+        "command": "terminalHypeLines.toggleEnabled",
+        "title": "Terminal Hype Lines: Toggle All Sounds"
+      },
+      {
+        "command": "terminalHypeLines.toggleStartCue",
+        "title": "Terminal Hype Lines: Toggle Start Sound"
+      },
+      {
+        "command": "terminalHypeLines.toggleSuccessCue",
+        "title": "Terminal Hype Lines: Toggle Success Sound"
+      },
+      {
+        "command": "terminalHypeLines.toggleWarningCue",
+        "title": "Terminal Hype Lines: Toggle Warning Sound"
+      },
+      {
+        "command": "terminalHypeLines.showLastIssue",
+        "title": "Terminal Hype Lines: Show Last Detected Issue"
       }
     ],
     "configuration": {
-      "title": "One Truth Cue",
+      "title": "Terminal Hype Lines",
       "properties": {
-        "oneTruthCue.enabled": {
+        "terminalHypeLines.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable command sound cues."
+          "description": "Enable terminal sound effects."
         },
-        "oneTruthCue.playOnSuccess": {
+        "terminalHypeLines.playOnStart": {
           "type": "boolean",
-          "default": false,
+          "default": true,
+          "description": "Play a start sound when a terminal command starts, if the active sound mode defines one."
+        },
+        "terminalHypeLines.playOnSuccess": {
+          "type": "boolean",
+          "default": true,
           "description": "Play a sound when a terminal command succeeds with exit code 0."
         },
-        "oneTruthCue.includeWarnings": {
+        "terminalHypeLines.includeWarnings": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Play a sound for warning-only terminal output."
         },
-        "oneTruthCue.treatUnknownExitCodeAsError": {
+        "terminalHypeLines.treatUnknownExitCodeAsError": {
           "type": "boolean",
           "default": false,
           "description": "Treat undefined terminal exit codes as errors."
         },
-        "oneTruthCue.showNotification": {
+        "terminalHypeLines.showNotification": {
           "type": "boolean",
           "default": false,
           "description": "Show a VS Code notification when an issue is detected."
         },
-        "oneTruthCue.errorSoundFile": {
+        "terminalHypeLines.startSoundFile": {
+          "type": "string",
+          "default": "",
+          "description": "Fallback start sound file name under the extension's media directory."
+        },
+        "terminalHypeLines.errorSoundFile": {
           "type": "string",
           "default": "error.mp3",
           "description": "Sound file name under the extension's media directory for errors."
         },
-        "oneTruthCue.warningSoundFile": {
+        "terminalHypeLines.warningSoundFile": {
           "type": "string",
           "default": "warning.mp3",
           "description": "Sound file name under the extension's media directory for warnings."
         },
-        "oneTruthCue.successSoundFile": {
+        "terminalHypeLines.successSoundFile": {
           "type": "string",
           "default": "warning.mp3",
           "description": "Sound file name under the extension's media directory for successful commands."
         },
-        "oneTruthCue.soundMode": {
+        "terminalHypeLines.soundMode": {
           "type": "string",
           "default": "default",
-          "description": "Active cue mode. Use One Truth Cue: Select Cue Mode or Next Cue Mode to change it."
+          "description": "Active sound mode. Use Terminal Hype Lines: Select Sound Mode or the explicit mode commands to change it."
         },
-        "oneTruthCue.soundModes": {
+        "terminalHypeLines.soundModes": {
           "type": "object",
           "default": {
             "default": {
@@ -124,15 +159,19 @@
               "warningSoundFile": "mode1/warning.mp3",
               "successSoundFile": "mode1/success.mp3"
             },
-            "mode2": {
-              "errorSoundFile": "mode2/error.mp3",
-              "warningSoundFile": "mode2/warning.mp3",
-              "successSoundFile": "mode2/success.mp3"
+            "mode_jujutsu": {
+              "startSoundFile": "mode_jujutsu/start.mp3",
+              "errorSoundFile": "mode_jujutsu/error.mp3",
+              "warningSoundFile": "mode_jujutsu/warn.mp3",
+              "successSoundFile": "mode_jujutsu/success.mp3"
             }
           },
           "additionalProperties": {
             "type": "object",
             "properties": {
+              "startSoundFile": {
+                "type": "string"
+              },
               "errorSoundFile": {
                 "type": "string"
               },
@@ -146,19 +185,19 @@
           },
           "description": "Named sound modes. Each file name is resolved under the extension's media directory."
         },
-        "oneTruthCue.cooldownMs": {
+        "terminalHypeLines.cooldownMs": {
           "type": "number",
           "default": 800,
           "minimum": 0,
           "description": "Minimum interval between sound playback in milliseconds."
         },
-        "oneTruthCue.maxOutputChars": {
+        "terminalHypeLines.maxOutputChars": {
           "type": "number",
           "default": 60000,
           "minimum": 1000,
           "description": "Maximum number of terminal output characters stored per command."
         },
-        "oneTruthCue.ignoredCommands": {
+        "terminalHypeLines.ignoredCommands": {
           "type": "array",
           "default": [],
           "items": {
@@ -185,8 +224,5 @@
     "@vscode/vsce": "^3.2.1",
     "eslint": "^9.17.0",
     "typescript": "^5.7.2"
-  },
-  "dependencies": {
-    "sound-play": "^1.1.0"
   }
 }

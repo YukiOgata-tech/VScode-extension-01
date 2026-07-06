@@ -21,10 +21,12 @@ export type TerminalIssue = {
 
 export type ExtensionConfig = {
   enabled: boolean;
+  playOnStart: boolean;
   playOnSuccess: boolean;
   includeWarnings: boolean;
   treatUnknownExitCodeAsError: boolean;
   showNotification: boolean;
+  startSoundFile: string;
   errorSoundFile: string;
   warningSoundFile: string;
   successSoundFile: string;
@@ -36,6 +38,7 @@ export type ExtensionConfig = {
 };
 
 export type SoundModeConfig = {
+  startSoundFile?: string;
   errorSoundFile?: string;
   warningSoundFile?: string;
   successSoundFile?: string;
